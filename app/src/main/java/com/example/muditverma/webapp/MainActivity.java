@@ -1,12 +1,14 @@
 package com.example.muditverma.webapp;
 
-        import android.support.v7.app.ActionBarActivity;
-        import android.os.Bundle;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.webkit.WebSettings;
-        import android.webkit.WebView;
-        import android.webkit.WebViewClient;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends ActionBarActivity {
     private WebView mWebView;
@@ -20,7 +22,14 @@ public class MainActivity extends ActionBarActivity {
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        mWebView.loadUrl("https://google.com");
+
+        Intent intent = getIntent();
+        String str;
+        str = intent.getStringExtra("link");
+
+        Log.i("MainActivity", "http://" + str);
+
+        mWebView.loadUrl(str);
     }
 
     @Override
